@@ -87,7 +87,7 @@ class Giffen(GraphScene):
             #
             Text3 = TextMobject("$d(p_1,p_2,Y)=$",            #0
                                 "$(\\frac{8p1+6p2-Y}{p1}$,",  #1
-                                "$-\\frac{8p1-6p2+2Y}{p2})$") #2
+                                "$\\frac{-8p1-6p2+2Y}{p2})$") #2
             Text3[0].set_color("66ff33")
             Text3.scale(0.85)
             Text3.shift(UP+0.5*RIGHT)
