@@ -562,7 +562,7 @@ class Giffen(GraphScene):
             p1=0.6
             p2=1
             Y=4*p1+6*p2-(1.44*p2**2)/p1 #Budget only for U = 0.1736111 (u4 function)
-            return((Y-p1*x)/p2)         #gives an Y for all p1,p2 such that U(x1,x2) = 2 holds at the optimum
+            return((Y-p1*x)/p2)         #gives an Y for all p1,p2 such that U(x1,x2) = 0.1736111 holds at the optimum
 
         def copyc4(self,x):
             p1=0.9
