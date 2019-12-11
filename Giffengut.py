@@ -200,7 +200,7 @@ class Giffen(GraphScene):
             Text22.move_to((Text1.get_corner(DOWN))+DOWN)
             #
             Text23 = TextMobject("Substitution Effect",
-                                 "$x_1 \\uparrow$ $x_2 \\downarrow$")
+                                 " $x_1 \\uparrow$ $x_2 \\downarrow$")
             Text23.scale(0.85)
             Text23.move_to((Text1.get_corner(DOWN))+DOWN)
             Text23.set_color("00ff00")
