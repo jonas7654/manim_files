@@ -7,35 +7,26 @@ class LinearTransformation(LinearTransformationScene):
         "include_background_plane": True,
         "include_foreground_plane": True,
         "foreground_plane_kwargs": {
-            "color": GREY,
-            "axis_config": {
-            "stroke_color": RED,
-            "x_max": 10,
-            }
-
-
+            "x_max": FRAME_WIDTH / 2,
+            "x_min": -FRAME_WIDTH / 2,
+            "y_max": FRAME_WIDTH / 2,
+            "y_min": -FRAME_WIDTH / 2,
+            "faded_line_ratio": 0
         },
         "background_plane_kwargs": {
             "color": GREY,
             "axis_config": {
-                "stroke_color": PURPLE,
-                "x_max": FRAME_WIDTH / 2,
-                "x_min": -FRAME_WIDTH / 2,
-                "y_max": FRAME_WIDTH / 2,
-                "y_min": -FRAME_WIDTH / 2,
+                "stroke_color": LIGHT_GREY,
             },
             "number_line_config": {
                 "color": GREY,
-                "x_max": 10,
-
             },
             "background_line_style": {
                 "stroke_color": GREY,
                 "stroke_width": 1,
-
             },
         },
-        "show_coordinates": True,
+        "show_coordinates": False,
         "show_basis_vectors": True,
         "basis_vector_stroke_width": 6,
         "i_hat_color": X_COLOR,
@@ -44,11 +35,12 @@ class LinearTransformation(LinearTransformationScene):
         "t_matrix": [[3, 0], [1, 2]],
     }
 
+
     def construct(self):
         matrix = [[2, -2], [3 , 3]]
         v = [1, 2]
         b = [1, 9]
-        c = TextMobject("$Vector \ Transformation$")
+        c = TextMobject("Vector Transformation")
 
 
 

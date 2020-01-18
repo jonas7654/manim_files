@@ -2,7 +2,50 @@ from manimlib.imports import *
 import math
 import numpy as np
 
-class Giffen(GraphScene):
+
+def get_coords_from_csv(file_name):
+    import csv
+    coords = []
+    with open(f'{file_name}.csv', 'r') as csvFile:
+        reader = csv.reader(csvFile)
+        for row in reader:
+            x,y = row
+            coord = [float(x),float(y)]
+            coords.append(coord)
+    csvFile.close()
+    return coords
+
+class GraphFromData(GraphScene):
+    # Covert the data coords to the graph points
+    def get_points_from_coords(self,coords):
+        return [
+            # Convert COORDS -> POINTS
+            self.coords_to_point(px,py)
+            # See manimlib/scene/graph_scene.py
+            for px,py in coords
+        ]
+
+    # Return the dots of a set of points
+    def get_dots_from_coords(self,coords,radius=0.1):
+        points = self.get_points_from_coords(coords)
+        dots = VGroup(*[
+            Dot(radius=radius).move_to([px,py,pz])
+            for px,py,pz in points
+            ]
+        )
+        return dots
+
+class DiscreteGraphFromSetPoints(VMobject):
+    def __init__(self,set_of_points,**kwargs):
+        super().__init__(**kwargs)
+        self.set_points_as_corners(set_of_points)
+
+class SmoothGraphFromSetPoints(VMobject):
+    def __init__(self,set_of_points,**kwargs):
+        super().__init__(**kwargs)
+        self.set_points_smoothly(set_of_points)
+
+class Giffen(GraphFromData):
         CONFIG = {
     "x_min": 0,
     "x_max": 15,
@@ -35,7 +78,7 @@ class Giffen(GraphScene):
             self.setup_axes(animate=True)
 
             #Functions for Animation
-            u1 = self.get_graph(self.u1,color=YELLOW,x_min=4.01,x_max=6.5)
+            u1 = self.get_graph(self.u1,color=YELLOW,x_min=4.01,x_max=6.67857)
             u2 = self.get_graph(self.u2,color=YELLOW,x_min=4.01,x_max=7.4)
             u3 = self.get_graph(self.u3,color=YELLOW,x_min=4.01,x_max=8.5)
             u4 = self.get_graph(self.u4,color=YELLOW,x_min=4.01,x_max=10.2)
@@ -153,7 +196,7 @@ class Giffen(GraphScene):
             Text12.shift(2*RIGHT+UP)
             #
             Text13 = TextMobject(
-                                 "$p_1 \\downarrow$",               #0
+                                 "$p_1 \\downarrow$",             #0
                                  "$\Longrightarrow$",             #1
                                  "$x_1^{\\ast} \\downarrow$")     #2
 
@@ -367,6 +410,23 @@ class Giffen(GraphScene):
 
 
 
+            #####################
+            #Price-Consume-Curve#
+            #####################
+
+        #OPTIMAL (x1,x2)    
+            coords = get_coords_from_csv("/home/jonas/Desktop/prices")
+            dots = self.get_dots_from_coords(coords,radius = 0.08)
+            dots_small = self.get_dots_from_coords(coords,radius=0.05)
+            points = self.get_points_from_coords(coords)
+            graph = DiscreteGraphFromSetPoints(points)
+            smoothgraph = SmoothGraphFromSetPoints(points)
+        #PRICE CURVE
+            pricecc = get_coords_from_csv("pkk")
+            pricecc_points = self.get_points_from_coords(pricecc)
+            pricecc_graph = SmoothGraphFromSetPoints(pricecc_points)
+        
+    
             # ANIMATION
             self.play(Write(Text1))
             self.play(Write(Intro))
@@ -423,7 +483,11 @@ class Giffen(GraphScene):
             self.wait(2)
             self.play(FadeOut(linedotucfade),FadeOut(Text13),FadeOut(Text4),FadeOut(Text3),ShowCreation(copyc4v2),FadeOut(constraint7))
             self.play(FadeIn(Text14))
+            self.play(ShowCreation(dots))
             self.wait()
+            self.play(Transform(dots,dots_small))
+            self.play(ShowCreation(pricecc_graph),run_time=5)
+            self.wait(5)
             self.play(FadeIn(Text15))
             self.play(Transform(copyc4,copyc7),run_time=2)
             self.play(FadeOut(Text15),Transform(Text14,Text16))
