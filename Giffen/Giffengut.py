@@ -263,6 +263,14 @@ class Giffen(GraphFromData):
             Text25[1].move_to((Text24[1].get_corner(DOWN))+0.5*DOWN+0.2*LEFT)
 
 
+            Text_pkk = TextMobject("If we trace the path of all optimal $(x_1^\\ast,x_2^\\ast)$")
+            Text_pkk.move_to(Text14.get_corner(DOWN)+0.5*DOWN)
+            Text_pkk.scale(0.7)
+            
+            Text_pkk2 = TextMobject("while $p_1$ changes, it yields the Price Consume Curve")
+            Text_pkk2.move_to(Text_pkk.get_corner(DOWN)+0.4*DOWN+0.1*RIGHT)
+            Text_pkk2.scale(0.7)
+
 
 
             #lines/dots
@@ -274,7 +282,7 @@ class Giffen(GraphFromData):
             dottedlinevert1 = DashedVMobject(vert_line1)
             dot1 = Dot(self.coords_to_point((8*1.2+6*1-8)/1.2,(-8*1.2-6*1+2*8)/1))
             dot1.set_color("66ff33")
-            dot1.scale(0.5)
+            dot1.scale(0.75)
             line1group = VGroup(dottedlinehorz1,dottedlinevert1,dot1)
             #
             vert_line2 = self.get_vertical_line_to_graph((8*1.1+6*1-8)/1.1,u2,color=WHITE)
@@ -285,7 +293,7 @@ class Giffen(GraphFromData):
             dottedlinevert2 = DashedVMobject(vert_line2)
             dot2 = Dot(self.coords_to_point((8*1.1+6*1-8)/1.1,(-8*1.1-6*1+2*8)/1))
             dot2.set_color("66ff33")
-            dot2.scale(0.5)
+            dot2.scale(0.75)
             line2group = VGroup(dottedlinehorz2,dottedlinevert2,dot2)
             #
             vert_line3 = self.get_vertical_line_to_graph((8*1+6*1-8)/1,u3,color=WHITE)
@@ -296,7 +304,7 @@ class Giffen(GraphFromData):
             dottedlinevert3 = DashedVMobject(vert_line3)
             dot3 = Dot(self.coords_to_point((8*1+6*1-8)/1,(-8*1-6*1+2*8)/1))
             dot3.set_color("66ff33")
-            dot3.scale(0.5)
+            dot3.scale(0.75)
             line3group = VGroup(dottedlinehorz3,dottedlinevert3,dot3)
             #
             vert_line4 = self.get_vertical_line_to_graph((8*0.9+6*1-8)/0.9,u4,color=WHITE)
@@ -307,7 +315,7 @@ class Giffen(GraphFromData):
             dottedlinevert4 = DashedVMobject(vert_line4)
             dot4 = Dot(self.coords_to_point((8*0.9+6*1-8)/0.9,(-8*0.9-6*1+2*8)/1))
             dot4.set_color("66ff33")
-            dot4.scale(0.5)
+            dot4.scale(0.75)
             line4group = VGroup(dottedlinehorz4,dottedlinevert4,dot4)
             #
             vert_line5 = self.get_vertical_line_to_graph((8*0.8+6*1-8)/0.8,u5,color=WHITE)
@@ -318,7 +326,7 @@ class Giffen(GraphFromData):
             dottedlinevert5 = DashedVMobject(vert_line5)
             dot5 = Dot(self.coords_to_point((8*0.8+6*1-8)/0.8,(-8*0.8-6*1+2*8)/1))
             dot5.set_color("66ff33")
-            dot5.scale(0.5)
+            dot5.scale(0.75)
             line5group = VGroup(dottedlinehorz5,dottedlinevert5,dot5)
             #
             vert_line6 = self.get_vertical_line_to_graph((8*0.7+6*1-8)/0.7,u6,color=WHITE)
@@ -329,7 +337,7 @@ class Giffen(GraphFromData):
             dottedlinevert6 = DashedVMobject(vert_line6)
             dot6 = Dot(self.coords_to_point((8*0.7+6*1-8)/0.7,(-8*0.7-6*1+2*8)/1))
             dot6.set_color("66ff33")
-            dot6.scale(0.5)
+            dot6.scale(0.75)
             line6group = VGroup(dottedlinehorz6,dottedlinevert6,dot6)
             #
             vert_line7 = self.get_vertical_line_to_graph((8*0.6+6*1-8)/0.6,u7,color=WHITE)
@@ -340,7 +348,7 @@ class Giffen(GraphFromData):
             dottedlinevert7 = DashedVMobject(vert_line7)
             dot7 = Dot(self.coords_to_point((8*0.6+6*1-8)/0.6,(-8*0.6-6*1+2*8)/1))
             dot7.set_color("66ff33")
-            dot7.scale(0.5)
+            dot7.scale(0.75)
             line7group = VGroup(dottedlinehorz7,dottedlinevert7,dot7)
             #
             x2hicks = self.coords_to_point((8*0.9+6*1-8)/0.9,(-8*0.9-6*1+2*8)/1)
@@ -407,7 +415,8 @@ class Giffen(GraphFromData):
             EQU = VGroup(Eq,GiffenFuncwithg)
             LINEGROUPFORFADEOUT = VGroup(line1group,line2group,line3group,line4group,line5group,line6group,line7group)
             linedotucfade = VGroup(LINEGROUPFORFADEOUT,fade)
-
+            dottedlines = VGroup(dottedlinehorz1,dottedlinevert1,dottedlinehorz2,dottedlinevert2,dottedlinehorz3,dottedlinevert3,dottedlinehorz4,dottedlinevert4,dottedlinehorz5,dottedlinevert5,dottedlinehorz6,dottedlinevert6,dottedlinehorz7,dottedlinevert7)   
+            dots = VGroup(dot1,dot2,dot3,dot4,dot5,dot6,dot7)
 
 
             #####################
@@ -416,13 +425,15 @@ class Giffen(GraphFromData):
 
         #OPTIMAL (x1,x2)    
             coords = get_coords_from_csv("prices")
-            dots = self.get_dots_from_coords(coords,radius = 0.08)
-            dots_small = self.get_dots_from_coords(coords,radius=0.05)
+            dots_bundle = self.get_dots_from_coords(coords,radius = 0.075)
+            dots_bundle_small = self.get_dots_from_coords(coords,radius=0.05)
             points = self.get_points_from_coords(coords)
             graph = DiscreteGraphFromSetPoints(points)
             smoothgraph = SmoothGraphFromSetPoints(points)
+            dots_bundle.set_color("66ff33")
+            dots_bundle_small.set_color("66ff33")
         #PRICE CURVE
-            pricecc = get_coords_from_csv("pkk")
+            pricecc = get_coords_from_csv("pkk_new")
             pricecc_points = self.get_points_from_coords(pricecc)
             pricecc_graph = SmoothGraphFromSetPoints(pricecc_points)
         
@@ -443,7 +454,6 @@ class Giffen(GraphFromData):
             self.play(ApplyMethod(GiffenFuncwithg.shift,Intro.get_corner(DOWN)+1.75*UP))
             self.play(ShowCreation(ind),run_time=2)
             self.wait()
-            #self.play(FadeOut(ufade2))
             self.wait()
             self.play(Write(Text3))
             self.play(GrowFromCenter(parentfortext4),FadeIn(parenttext4))
@@ -462,13 +472,10 @@ class Giffen(GraphFromData):
             self.play(Transform(Text5,Text6))
             self.play(Transform(Text5,Text7))
             self.play(ReplacementTransform(constraint,constraint2))
-            #self.play(ShowCreation(u2))
             self.play(ShowCreation(line2group))
             self.play(Transform(Text5,Text8))
             self.play(ReplacementTransform(constraint2,constraint3))
-            #self.play(ShowCreation(u3))
             self.play(ShowCreation(line3group))
-            #self.play(ShowCreation(uinput))
             self.play(Transform(Text5,Text9),ReplacementTransform(constraint3,constraint4))
             self.play(ShowCreation(line4group))
             self.play(Transform(Text5,Text10),ReplacementTransform(constraint4,constraint5))
@@ -477,13 +484,21 @@ class Giffen(GraphFromData):
             self.play(ShowCreation(line6group))
             self.play(Transform(Text5,Text12),ReplacementTransform(constraint6,constraint7))
             self.play(ShowCreation(line7group))
-            self.wait()
-            self.play(FadeOut(Text5))
+            self.wait(2)
+            self.play(FadeOut(Text5),FadeOut(dottedlines),FadeOut(constraint7))
             self.play(Write(Text13))
             self.wait(2)
-            self.play(FadeOut(linedotucfade),FadeOut(Text13),FadeOut(Text4),FadeOut(Text3),ShowCreation(copyc4v2),FadeOut(constraint7))
-            self.play(FadeIn(Text14))
-            self.wait()
+            self.play(FadeOut(Text13))
+            self.play(FadeIn(Text_pkk),FadeIn(Text_pkk2))
+            self.wait(3)
+            self.play(Write(dots_bundle,run_time = 2))
+            self.play(FadeOut(dots))
+            self.play(Transform(dots_bundle,dots_bundle_small),run_time = 2)
+            self.play(ShowCreation(pricecc_graph),run_time = 5)
+            self.wait(2)
+            self.play(FadeOut(dots_bundle),FadeOut(pricecc_graph),FadeOut(Text3),FadeOut(Text_pkk),FadeOut(Text_pkk2),FadeOut(ufade))
+            self.play(FadeIn(Text14),ShowCreation(copyc4v2))
+            self.wait(2)
             self.play(FadeIn(Text15))
             self.play(Transform(copyc4,copyc7),run_time=2)
             self.play(FadeOut(Text15),Transform(Text14,Text16))

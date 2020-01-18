@@ -1,0 +1,3 @@
+file '/home/jonas/Documents/Programming/python/manim_files/Giffen/videos/Giffengut/1440p60/partial_movie_files/Giffen/00001.mp4'
+file '/home/jonas/Documents/Programming/python/manim_files/Giffen/videos/Giffengut/1440p60/partial_movie_files/Giffen/00002.mp4'
+file '/home/jonas/Documents/Programming/python/manim_files/Giffen/videos/Giffengut/1440p60/partial_movie_files/Giffen/00003.mp4'
