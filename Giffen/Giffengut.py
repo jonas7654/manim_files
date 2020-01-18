@@ -415,7 +415,7 @@ class Giffen(GraphFromData):
             #####################
 
         #OPTIMAL (x1,x2)    
-            coords = get_coords_from_csv("/home/jonas/Desktop/prices")
+            coords = get_coords_from_csv("prices")
             dots = self.get_dots_from_coords(coords,radius = 0.08)
             dots_small = self.get_dots_from_coords(coords,radius=0.05)
             points = self.get_points_from_coords(coords)
@@ -483,11 +483,7 @@ class Giffen(GraphFromData):
             self.wait(2)
             self.play(FadeOut(linedotucfade),FadeOut(Text13),FadeOut(Text4),FadeOut(Text3),ShowCreation(copyc4v2),FadeOut(constraint7))
             self.play(FadeIn(Text14))
-            self.play(ShowCreation(dots))
             self.wait()
-            self.play(Transform(dots,dots_small))
-            self.play(ShowCreation(pricecc_graph),run_time=5)
-            self.wait(5)
             self.play(FadeIn(Text15))
             self.play(Transform(copyc4,copyc7),run_time=2)
             self.play(FadeOut(Text15),Transform(Text14,Text16))
