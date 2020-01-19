@@ -123,7 +123,7 @@ class Giffen(GraphFromData):
             Text1 = TextMobject("Giffen good",color=WHITE)
             Text1.to_edge(UP)
             #
-            Text2 = TextMobject(("The Indifference Curves \\linebreak are given by $g(x_1)$"),
+            Text2 = TextMobject(("The indifference curves \\linebreak are given by $g(x_1)$"),
                     tex_to_color_map={"$g(x_1)$": YELLOW}
                     )
             Text2.scale(0.8)
@@ -156,7 +156,7 @@ class Giffen(GraphFromData):
             ContourLine.shift(Text2.get_corner(DOWN)+0.65*DOWN)
             ContourLine.scale(0.95)
             #
-            Intro = TextMobject(("Our Utility is given by"),
+            Intro = TextMobject(("Our utility is given by"),
                     tex_to_color_map={"Utility":YELLOW})
             Intro.scale(0.95)
             Intro.shift(2*UP)
@@ -170,7 +170,7 @@ class Giffen(GraphFromData):
 
 
             #
-            Text5 = TextMobject("if $p_1$ decreases our Budgetline gets flatter")
+            Text5 = TextMobject("if $p_1$ decreases our budget line gets flatter")
             Text5.scale(0.85)
             Text5.shift(RIGHT+0.5*UP)
             #
@@ -263,12 +263,12 @@ class Giffen(GraphFromData):
             Text25[1].move_to((Text24[1].get_corner(DOWN))+0.5*DOWN+0.2*LEFT)
 
 
-            Text_pkk = TextMobject("If we trace the path of all $(x_1^\\ast,x_2^\\ast)$")
-            Text_pkk.move_to(Text14.get_corner(DOWN)+0.5*DOWN)
+            Text_pkk = TextMobject("If we trace the path of all $(x_1^\\ast,x_2^\\ast)$ while $p_1$ changes,")
+            Text_pkk.move_to(Text14.get_corner(DOWN)+0.5*DOWN+RIGHT)
             Text_pkk.scale(0.7)
             
-            Text_pkk2 = TextMobject("while $p_1$ changes, it yields the Price Consume Curve")
-            Text_pkk2.move_to(Text_pkk.get_corner(DOWN)+0.4*DOWN+0.1*RIGHT)
+            Text_pkk2 = TextMobject("it yields the price-consumption curve")
+            Text_pkk2.move_to(Text14.get_corner(DOWN)+DOWN+0.11*LEFT)
             Text_pkk2.scale(0.7)
 
 
