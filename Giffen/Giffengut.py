@@ -103,7 +103,7 @@ class Giffen(GraphFromData):
 
 
             #TextMobject
-            GiffenFunc = TextMobject(("$U$=$\\frac{x_1-4}{(6-x_2)^2}$"),tex_to_color_map={"$U$": YELLOW})
+            GiffenFunc = TextMobject(("$U$ $=$ $\\frac{x_1-4}{(6-x_2)^2}$"),tex_to_color_map={"$U$": YELLOW})
             GiffenFunc.scale(0.95)
             GiffenFunc.shift(UP)
             #
@@ -150,7 +150,7 @@ class Giffen(GraphFromData):
             parentfortext4 = VGroup(braceforx1,braceforx2)
             parenttext4 = VGroup(t1,t2)
             #
-            ContourLine = TextMobject(("$g(x_1)$=$6-\\sqrt{\\frac{(x_1-4)}{U}}$"),
+            ContourLine = TextMobject(("$g(x_1)$ $=$ $6-\\sqrt{\\frac{(x_1-4)}{U}}$"),
                         tex_to_color_map={"$g(x_1)$": YELLOW}
                         )
             ContourLine.shift(Text2.get_corner(DOWN)+0.65*DOWN)
@@ -493,7 +493,7 @@ class Giffen(GraphFromData):
             self.play(FadeOut(dots))
             self.play(Transform(dots_bundle,dots_bundle_small),run_time = 2)
             self.play(ShowCreation(pricecc_graph),run_time = 5)
-            self.wait(2)
+            self.wait(3.5)
             self.play(FadeOut(dots_bundle),FadeOut(pricecc_graph),FadeOut(Text3),FadeOut(Text_pkk),FadeOut(Text_pkk2),FadeOut(ufade))
             self.play(FadeIn(Text14),ShowCreation(copyc4v2))
             self.wait(2)
