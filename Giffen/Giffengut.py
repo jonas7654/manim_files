@@ -371,11 +371,9 @@ class Giffen(GraphFromData):
             x2total = self.coords_to_point((8*0.6+6*1-8)/0.6,(-8*0.9-6*1+2*8)/1)
             y2total = self.coords_to_point((8*0.6+6*1-8)/0.6,(-8*0.6-6*1+2*8)/1) #(8*0.6+6*1-8)/0.6,(-8*0.6-6*1+2*8)/1
             x2totaleffect  = Line(x2total,y2total,color=ORANGE)
-            #x2totaleffect.set_color("ff00b9")
             x1total = self.coords_to_point((8*0.9+6*1-8)/0.9,(-8*0.9-6*1+2*8)/1)
             y1total = self.coords_to_point((8*0.6+6*1-8)/0.6,(-8*0.9-6*1+2*8)/1) #(8*0.6+6*1-8)/0.6,(-8*0.9-6*1+2*8)/1
             x1totaleffect   = Line(x1total,y1total,color=ORANGE)
-            #x1totaleffect.set_color("ff00b9")
             x1totaldotted = DashedVMobject(x1totaleffect)
             x2totaldotted = DashedVMobject(x2totaleffect)
             x1x2totalnodotted = VGroup(x1totaleffect,x2totaleffect)
@@ -464,7 +462,7 @@ class Giffen(GraphFromData):
             self.play(Write(dot1))
             self.wait()
             self.play(ApplyMethod(GiffenFuncwithg.scale,0.65))
-            self.play(ApplyMethod((GiffenFuncwithg.move_to),(GiffenFunc.get_corner(DOWN))+DOWN))
+            self.play(ApplyMethod((GiffenFuncwithg.move_to),(GiffenFunc.get_corner(DOWN))+DOWN+0.15*RIGHT))
             self.play(FadeOut(parentfortext4),FadeOut(parenttext4))
             self.play(Transform(Text3,Text4))
             self.play(Write(Text5))
@@ -519,7 +517,7 @@ class Giffen(GraphFromData):
             self.play(Transform(Text23,Text24),ShowCreation(x1x2incomenodotted))
             self.wait(2)
             self.play(Transform(Text24,Text25),FadeIn(x1x2totalnodotted),FadeOut(x1x2incomenodotted),FadeOut(x1x2nodotted))
-            self.wait(5)
+            self.wait(6)
             # #
             #
             #
